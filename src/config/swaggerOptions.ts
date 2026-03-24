@@ -1,20 +1,17 @@
 import swaggerJsdoc from "swagger-jsdoc";
 
-/**
- * swagger-jsdoc: merges this `definition` with @openapi blocks in route + validation files.
- */
 const swaggerOptions: swaggerJsdoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Resource Library API",
+      title: "Event API Documentation",
       version: "1.0.0",
-      description: "API docs for the resource library coding challenge",
+      description: "This is the API documentation for the Event.",
     },
     servers: [
       {
         url: "http://localhost:3000/api/v1",
-        description: "Local server (change port in .env if needed)",
+        description: "Local server",
       },
     ],
     components: {
@@ -23,19 +20,19 @@ const swaggerOptions: swaggerJsdoc.Options = {
           type: "http",
           scheme: "bearer",
           bearerFormat: "JWT",
-          description:
-            "Firebase ID token — Module 4: Authorization: Bearer <idToken>",
         },
       },
     },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
-  apis: [
-    "./src/api/v1/routes/*.ts",
-    "./src/api/v1/openapi/*.ts",
-    "./src/api/v1/validation/*.ts",
-  ],
+  apis: ["./src/api/v1/routes/*.ts", "./src/api/v1/validation/*.ts"],
 };
 
+// Generate the Swagger spec
 export const generateSwaggerSpec = (): object => {
   return swaggerJsdoc(swaggerOptions);
 };
