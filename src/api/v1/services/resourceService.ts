@@ -1,4 +1,4 @@
-import { Resource } from "../types/resource";
+import { Resource } from "../models/resource";
 
 let sampleResources: Resource[] = [
   {
