@@ -54,7 +54,7 @@ const resourceRouter = express.Router();
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Resource'
+ *               $ref: '#/components/schemas/Error'
  */
 
 resourceRouter.post(
