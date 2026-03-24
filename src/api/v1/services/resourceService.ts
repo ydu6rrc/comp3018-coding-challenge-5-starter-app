@@ -48,13 +48,13 @@ export const getAllResources = (): Resource[] => {
   return resources;
 };
 
-export const getResourceById = (id: number): Resource | undefined => {
+export const getResourceById = (id: number): Resource | null => {
   for (let i = 0; i < resources.length; i++) {
     if (resources[i].id === id) {
       return resources[i];
     }
   }
-  return undefined;
+  return null;
 };
 
 export const createResource = (input: {
@@ -79,4 +79,27 @@ export const createResource = (input: {
   };
   resources.push(newOne);
   return newOne;
+};
+
+export const updateResource = (
+  id: number,
+  patch: Partial<Pick<Resource, "title" | "type" | "url" | "description">>,
+): Resource | null => {
+  const found = getResourceById(id);
+  if (!found) {
+    return null;
+  }
+  if (patch.title !== undefined) {
+    found.title = patch.title;
+  }
+  if (patch.type !== undefined) {
+    found.type = patch.type;
+  }
+  if (patch.url !== undefined) {
+    found.url = patch.url;
+  }
+  if (patch.description !== undefined) {
+    found.description = patch.description;
+  }
+  return found;
 };

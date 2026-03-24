@@ -5,6 +5,8 @@ import {
   consoleLogger,
 } from "./api/v1/middleware/logger";
 import errorHandler from "./api/v1/middleware/errorHandler";
+import setupSwagger from "./config/swagger";
+import resourceRouter from "./api/v1/routes/resourceRoutes";
 
 /** import the routes **/
 
@@ -28,7 +30,7 @@ app.get("/api/v1/health", (req, res) => {
 });
 
 /** Update the api endppoints with appropriate routes **/
-
+app.use("/api/v1/resources", resourceRouter);
 app.use(errorHandler);
 
 export default app;

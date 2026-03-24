@@ -1,7 +1,7 @@
 export interface Resource {
   id: number;
   title: string;
-  type: "article" | "video" | "tutorial" | "documentation";
+  type: string;
   url: string;
   description: string;
   createdAt: string;
